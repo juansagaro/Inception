@@ -1,20 +1,53 @@
-networks:
-    jsagaro-net:
-        name: jsagaro-net
-        driver: bridge
-
 services:
-  nginx:
-    container_name: nginx
-    build: requirements/nginx/.
-    image: nginx
-    ports:
-      - 443:443
-    volumes:
-      - wordpress_data:/var/www/html
+  mariadb:
+    build: ./requirements/mariadb
+    container_name: mariadb
     restart: always
+    env_file: .env
     networks:
       - jsagaro-net
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
   wordpress:
-    build: requirements/wordpress/.
-    container_name: wp-php
+    build: ./requirements/wordpress
+    container_name: wordpress
+    restart: always
+    env_file: .env
+    depends_on:
+      - mariadb
+    networks:
+      - jsagaro-net
+    volumes:
+      - wordpress_data:/var/www/html
+
+  nginx:
+    build: ./requirements/nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    networks:
+      - jsagaro-net
+    volumes:
+      - wordpress_data:/var/www/html
+
+networks:
+  jsagaro-net:
+    driver: bridge
+
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/${USER}/data/mariadb
+      o: bind
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/${USER}/data/wordpress
+      o: bind
