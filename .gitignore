@@ -1,29 +1,24 @@
-# ==========================================
-# Archivos de Sistema y Entorno 42
-# ==========================================
+# Docker environment variables
+.env
+
+# Docker Secrets (CRÍTICO: Nunca subir las contraseñas reales)
+secrets/
+
+# Data folders (En caso de que las hayas creado localmente para pruebas)
+data/
+
+# OS generated files
 .DS_Store
+.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
+ehthumbs.db
+Thumbs.db
 
-# ==========================================
-# Editores de código
-# ==========================================
+# Editor files (Comunes en los iMacs de 42)
+*.swp
+*.swo
+*~
 .vscode/
 .idea/
-*.swp
-*~
-
-# ==========================================
-# CRÍTICO: Credenciales y Variables de Entorno
-# ==========================================
-# Ignorar siempre el archivo de variables
-.env
-srcs/.env
-
-# Ignorar la carpeta de secretos y archivos de texto con contraseñas
-# (Como los que se muestran en el ejemplo de la estructura del subject) [cite: 151, 155-157]
-secrets/
-*.txt
-credentials*
-*password*

@@ -24,5 +24,8 @@ RUN chmod +x /usr/local/bin/wp_start.sh
 # Exponer el puerto para NGINX
 EXPOSE 9000
 
+# Nos posicionamos en la carpeta compartida antes de ejecutar el script
+WORKDIR /var/www/html
+
 # Arrancar
 ENTRYPOINT ["/usr/local/bin/wp_start.sh"]
