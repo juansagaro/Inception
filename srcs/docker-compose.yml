@@ -1,0 +1,20 @@
+networks:
+    jsagaro-net:
+        name: jsagaro-net
+        driver: bridge
+
+services:
+  nginx:
+    container_name: nginx
+    build: requirements/nginx/.
+    image: nginx
+    ports:
+      - 443:443
+    volumes:
+      - wordpress_data:/var/www/html
+    restart: always
+    networks:
+      - jsagaro-net
+  wordpress:
+    build: requirements/wordpress/.
+    container_name: wp-php

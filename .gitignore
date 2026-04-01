@@ -1,0 +1,29 @@
+# ==========================================
+# Archivos de Sistema y Entorno 42
+# ==========================================
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# ==========================================
+# Editores de código
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*~
+
+# ==========================================
+# CRÍTICO: Credenciales y Variables de Entorno
+# ==========================================
+# Ignorar siempre el archivo de variables
+.env
+srcs/.env
+
+# Ignorar la carpeta de secretos y archivos de texto con contraseñas
+# (Como los que se muestran en el ejemplo de la estructura del subject) [cite: 151, 155-157]
+secrets/
+*.txt
+credentials*
+*password*
