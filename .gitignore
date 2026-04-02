@@ -1,15 +1,10 @@
-# Docker environment variables
 #.env
-
-# Docker Secrets (CRÍTICO: Nunca subir las contraseñas reales)
 #secrets/
 
-# Data folders (En caso de que las hayas creado localmente para pruebas)
 data/
 
 en.subject.pdf
 
-# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -18,7 +13,6 @@ en.subject.pdf
 ehthumbs.db
 Thumbs.db
 
-# Editor files (Comunes en los iMacs de 42)
 *.swp
 *.swo
 *~
