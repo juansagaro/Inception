@@ -14,10 +14,10 @@ This stack provides a complete web hosting infrastructure:
 | **WordPress** | Content management system | `https://jsagaro-.42.fr` |
 | **MariaDB** | Database server for WordPress | Internal only |
 | **Redis** | Cache system for WordPress performance | Internal only |
-| **Adminer** | Web-based database management | `https://jsagaro-.42.fr/adminer` |
+| **Adminer** | Web-based database management | `https://adminer.jsagaro-.42.fr` |
 | **FTP** | File transfer to WordPress files | Port 21 |
-| **Portainer** | Docker container management UI | `https://jsagaro-.42.fr/portainer` |
-| **Static Site** | Personal portfolio website | `https://jsagaro-.42.fr/static` |
+| **Portainer** | Docker container management UI | `https://portainer.jsagaro-.42.fr` |
+| **Static Site** | Personal portfolio website | `https://static.jsagaro-.42.fr` |
 
 ---
 
@@ -83,9 +83,9 @@ make fclean
 
 | Service | URL |
 |---------|-----|
-| Adminer (Database UI) | `https://jsagaro-.42.fr/adminer` |
-| Portainer (Docker UI) | `https://jsagaro-.42.fr/portainer` |
-| Static Portfolio | `https://jsagaro-.42.fr/static` |
+| Adminer (Database UI) | `https://adminer.jsagaro-.42.fr` |
+| Portainer (Docker UI) | `https://portainer.jsagaro-.42.fr` |
+| Static Portfolio | `https://static.jsagaro-.42.fr` |
 
 ---
 
@@ -181,7 +181,13 @@ You should receive HTML content (not an error).
 
 ### "This site can't be reached"
 
-- Verify `/etc/hosts` contains: `127.0.0.1 jsagaro-.42.fr`
+- Verify `/etc/hosts` contains entries for all domains:
+  ```
+  127.0.0.1 jsagaro-.42.fr
+  127.0.0.1 adminer.jsagaro-.42.fr
+  127.0.0.1 static.jsagaro-.42.fr
+  127.0.0.1 portainer.jsagaro-.42.fr
+  ```
 - Restart NGINX: `docker restart nginx`
 
 ### Database connection error in WordPress

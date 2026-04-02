@@ -17,7 +17,6 @@ class NetworkCanvas {
         this.particleCount = 80;
         this.connectionDistance = 120;
         this.particleColor = '#00babc';
-        this.lineColor = 'rgba(0, 186, 188, 0.15)';
         
         this.init();
         this.animate();
@@ -177,22 +176,62 @@ function initScrollAnimations() {
         rootMargin: '0px 0px -50px 0px'
     };
     
-    const observer = new IntersectionObserver((entries) => {
+    // Observer for cards with staggered animation
+    const cardObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
                 // Staggered animation delay
                 setTimeout(() => {
                     entry.target.classList.add('animate-in');
                 }, index * 100);
-                observer.unobserve(entry.target);
+                cardObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
+    // Observer for skill categories with staggered animation
+    const skillObserver = new IntersectionObserver((entries) => {
+        // Sort entries by their DOM position for consistent stagger order
+        const sortedEntries = [...entries].sort((a, b) => {
+            return a.target.compareDocumentPosition(b.target) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1;
+        });
+        
+        sortedEntries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, index * 150);
+                skillObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observer for section headers
+    const headerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                headerObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
+    
     // Observe project cards and contact cards
     document.querySelectorAll('.project-card, .contact-card').forEach(el => {
         el.classList.add('animate-hidden');
-        observer.observe(el);
+        cardObserver.observe(el);
+    });
+    
+    // Observe skill categories
+    document.querySelectorAll('.skill-category').forEach(el => {
+        el.classList.add('animate-hidden');
+        skillObserver.observe(el);
+    });
+    
+    // Observe section headers (skills, projects, contact)
+    document.querySelectorAll('#skills .section-header, #projects .section-header, #contact .section-header').forEach(header => {
+        header.classList.add('animate-hidden');
+        headerObserver.observe(header);
     });
     
     // Add animation styles
@@ -208,6 +247,10 @@ function initScrollAnimations() {
             transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
                         transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .skill-category.animate-in {
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
     `;
     document.head.appendChild(style);
 }
@@ -218,7 +261,6 @@ function initScrollAnimations() {
 
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-    let lastScroll = 0;
     
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
@@ -230,8 +272,6 @@ function initNavbarScroll() {
             navbar.style.background = 'rgba(10, 10, 15, 0.8)';
             navbar.style.boxShadow = 'none';
         }
-        
-        lastScroll = currentScroll;
     });
 }
 

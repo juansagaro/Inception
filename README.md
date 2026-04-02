@@ -1,13 +1,4 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/>
-  <img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white" alt="NGINX"/>
-  <img src="https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white" alt="WordPress"/>
-  <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="MariaDB"/>
-  <img src="https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white" alt="Debian"/>
-  <img src="https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis"/>
-</p>
-
-<h1 align="center">🐳 Inception</h1>
+<h1 align="center">Inception</h1>
 
 <p align="center">
   <strong>A containerized web infrastructure built from scratch</strong><br>
@@ -15,9 +6,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Score-100%2F100-success?style=flat-square" alt="Score"/>
+  <img src="https://img.shields.io/badge/Score-125%2F100-success?style=flat-square" alt="Score"/>
   <img src="https://img.shields.io/badge/Bonus-5%2F5-blue?style=flat-square" alt="Bonus"/>
-  <img src="https://img.shields.io/badge/42-Madrid-purple?style=flat-square" alt="42 Madrid"/>
+  <img src="https://img.shields.io/badge/42-Madrid-black?style=flat-square" alt="42 Madrid"/>
 </p>
 
 ---
@@ -28,11 +19,11 @@ Inception demonstrates infrastructure-as-code principles by building a complete 
 
 ### Key Achievements
 
-- ✅ **8 custom Dockerfiles** built from `debian:bookworm`
-- ✅ **TLS-only access** via NGINX reverse proxy (TLSv1.2/1.3)
-- ✅ **Docker Secrets** for credential management
-- ✅ **Persistent volumes** with host-mounted storage
-- ✅ **Complete bonus** with Redis, Adminer, FTP, Portainer, and static site
+- 8 custom Dockerfiles built from `debian:bookworm`
+- TLS-only access via NGINX reverse proxy (TLSv1.2/1.3)
+- Docker Secrets for credential management
+- Persistent volumes with host-mounted storage
+- Complete bonus: Redis, Adminer, FTP, Portainer, Static Site
 
 ---
 
@@ -41,21 +32,21 @@ Inception demonstrates infrastructure-as-code principles by building a complete 
 ```mermaid
 graph TB
     subgraph External
-        Client([🌐 Client])
+        Client([Client])
     end
     
     subgraph Docker Network
         Client -->|:443 HTTPS| NGINX
         
         subgraph Containers
-            NGINX[🔒 NGINX<br/>TLS Termination]
-            WP[📝 WordPress<br/>PHP-FPM]
-            DB[(🗄️ MariaDB)]
-            REDIS[(⚡ Redis)]
-            ADM[🔧 Adminer]
-            FTP[📁 FTP Server]
-            PORT[🐋 Portainer]
-            STATIC[🌐 Static Site]
+            NGINX[NGINX<br/>TLS Termination]
+            WP[WordPress<br/>PHP-FPM]
+            DB[(MariaDB)]
+            REDIS[(Redis)]
+            ADM[Adminer]
+            FTP[FTP Server]
+            PORT[Portainer]
+            STATIC[Static Site]
         end
         
         NGINX --> WP
@@ -84,8 +75,102 @@ graph TB
     style WP fill:#21759B,color:#fff
     style DB fill:#003545,color:#fff
     style REDIS fill:#DC382D,color:#fff
-    style Client fill:#2496ED,color:#fff
 ```
+
+---
+
+## 📦 Services
+
+<table>
+<tr>
+<td width="50%">
+
+### NGINX
+![NGINX](https://img.shields.io/badge/NGINX-009639?style=flat-square&logo=nginx&logoColor=white)
+
+Reverse proxy with TLS termination. Single entry point for all HTTPS traffic. Routes requests to appropriate backend services.
+
+**Port:** 443
+
+</td>
+<td width="50%">
+
+### WordPress
+![WordPress](https://img.shields.io/badge/WordPress-21759B?style=flat-square&logo=wordpress&logoColor=white)
+
+Content management system running with PHP-FPM. Connected to MariaDB for data persistence and Redis for object caching.
+
+**URL:** `https://jsagaro-.42.fr`
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### MariaDB
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariadb&logoColor=white)
+
+Relational database storing WordPress content. Configured with InnoDB engine for transactional support.
+
+**Access:** Internal only
+
+</td>
+<td width="50%">
+
+### Redis
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
+
+In-memory cache for WordPress object caching. Improves page load performance by reducing database queries.
+
+**Access:** Internal only
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### Adminer
+![Adminer](https://img.shields.io/badge/Adminer-4479A1?style=flat-square&logo=adminer&logoColor=white)
+
+Lightweight database administration tool. Web interface for managing MariaDB tables, queries, and backups.
+
+**URL:** `https://adminer.jsagaro-.42.fr`
+
+</td>
+<td width="50%">
+
+### Portainer
+![Portainer](https://img.shields.io/badge/Portainer-13BEF9?style=flat-square&logo=portainer&logoColor=white)
+
+Docker container management GUI. Monitor, start, stop, and inspect containers through web interface.
+
+**URL:** `https://portainer.jsagaro-.42.fr`
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### FTP Server
+![FTP](https://img.shields.io/badge/vsftpd-333333?style=flat-square&logo=files&logoColor=white)
+
+Secure file transfer access to WordPress files. Allows direct upload/download of themes, plugins, and media.
+
+**Port:** 21
+
+</td>
+<td width="50%">
+
+### Static Site
+![Static](https://img.shields.io/badge/Portfolio-000000?style=flat-square&logo=html5&logoColor=white)
+
+Personal portfolio website. Pure HTML/CSS/JS served directly by NGINX without backend processing.
+
+**URL:** `https://static.jsagaro-.42.fr`
+
+</td>
+</tr>
+</table>
 
 ---
 
@@ -104,8 +189,13 @@ echo "secure_wp_admin" > secrets/wp_admin_password.txt
 echo "secure_wp_user" > secrets/wp_user_password.txt
 echo "secure_ftp_pass" > secrets/ftp_password.txt
 
-# Add domain to hosts file
-echo "127.0.0.1 jsagaro-.42.fr" | sudo tee -a /etc/hosts
+# Add domains to hosts file
+sudo tee -a /etc/hosts << EOF
+127.0.0.1 jsagaro-.42.fr
+127.0.0.1 adminer.jsagaro-.42.fr
+127.0.0.1 static.jsagaro-.42.fr
+127.0.0.1 portainer.jsagaro-.42.fr
+EOF
 
 # Build and launch
 make all
@@ -116,33 +206,18 @@ open https://jsagaro-.42.fr
 
 ---
 
-## 📦 Services
-
-| Service | Description | Port |
-|---------|-------------|------|
-| **NGINX** | Reverse proxy, TLS termination, routing | 443 |
-| **WordPress** | CMS with PHP-FPM | Internal |
-| **MariaDB** | Relational database | Internal |
-| **Redis** | Object cache for WordPress | Internal |
-| **Adminer** | Database web UI | `/adminer` |
-| **Portainer** | Docker management UI | `/portainer` |
-| **FTP** | File transfer to WordPress | 21 |
-| **Static** | Portfolio website | `/static` |
-
----
-
 ## 🛠️ Makefile Commands
 
 | Command | Description |
 |---------|-------------|
 | `make all` | Build images and start containers |
+| `make stop` | Pause containers (keep state) |
+| `make start` | Resume paused containers |
+| `make status` | Show container status |
+| `make logs` | Stream real-time logs |
 | `make clean` | Stop and remove containers |
 | `make fclean` | Full cleanup (images, volumes, data) |
 | `make re` | Rebuild from scratch |
-| `make status` | Show container status |
-| `make logs` | Stream real-time logs |
-| `make stop` | Pause containers |
-| `make start` | Resume containers |
 
 ---
 
@@ -178,7 +253,7 @@ inception/
 
 ---
 
-## 🔒 Security Features
+## 🔒 Security
 
 - **TLS 1.2/1.3 only** - No legacy SSL protocols
 - **Docker Secrets** - Passwords never in environment variables
@@ -190,20 +265,12 @@ inception/
 
 ## 📚 Documentation
 
-For detailed information, see the `/docs` directory:
-
-- [**docs/README.md**](docs/README.md) - Technical choices and 42 evaluation requirements
-- [**docs/USER_DOC.md**](docs/USER_DOC.md) - End-user operation guide
-- [**docs/DEV_DOC.md**](docs/DEV_DOC.md) - Developer setup and maintenance
+- [docs/README.md](docs/README.md) - Technical choices and 42 evaluation notes
+- [docs/USER_DOC.md](docs/USER_DOC.md) - End-user operation guide
+- [docs/DEV_DOC.md](docs/DEV_DOC.md) - Developer setup and maintenance
 
 ---
 
 ## 👤 Author
 
 **jsagaro-** - 42 Madrid
-
----
-
-<p align="center">
-  <sub>Built with ☕ and 🐳 at 42 Madrid</sub>
-</p>

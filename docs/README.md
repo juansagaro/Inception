@@ -26,7 +26,13 @@ All services run in isolated containers connected via a Docker bridge network, w
 
 - Linux virtual machine (Debian/Ubuntu recommended)
 - Docker 20.10+ with Docker Compose V2
-- Domain entry in `/etc/hosts`: `127.0.0.1 jsagaro-.42.fr`
+- Domain entries in `/etc/hosts`:
+  ```
+  127.0.0.1 jsagaro-.42.fr
+  127.0.0.1 adminer.jsagaro-.42.fr
+  127.0.0.1 static.jsagaro-.42.fr
+  127.0.0.1 portainer.jsagaro-.42.fr
+  ```
 
 ### Setup
 
@@ -42,9 +48,11 @@ All services run in isolated containers connected via a Docker bridge network, w
 
 ```bash
 make all      # Build and start infrastructure
+make stop     # Pause containers (keep state)
+make start    # Resume paused containers
 make status   # Check container status
 make logs     # View real-time logs
-make clean    # Stop containers
+make clean    # Stop and remove containers
 make fclean   # Full cleanup (removes all data)
 make re       # Rebuild from scratch
 ```
@@ -53,9 +61,9 @@ make re       # Rebuild from scratch
 
 - WordPress: `https://jsagaro-.42.fr`
 - Admin Panel: `https://jsagaro-.42.fr/wp-admin`
-- Adminer: `https://jsagaro-.42.fr/adminer`
-- Portainer: `https://jsagaro-.42.fr/portainer`
-- Portfolio: `https://jsagaro-.42.fr/static`
+- Adminer: `https://adminer.jsagaro-.42.fr`
+- Portainer: `https://portainer.jsagaro-.42.fr`
+- Portfolio: `https://static.jsagaro-.42.fr`
 
 ---
 

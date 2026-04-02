@@ -46,6 +46,9 @@ Add to `/etc/hosts`:
 
 ```
 127.0.0.1 jsagaro-.42.fr
+127.0.0.1 adminer.jsagaro-.42.fr
+127.0.0.1 static.jsagaro-.42.fr
+127.0.0.1 portainer.jsagaro-.42.fr
 ```
 
 ---

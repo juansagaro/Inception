@@ -6,7 +6,6 @@
     --bg-primary: #0a0a0f;
     --bg-secondary: #0f172a;
     --bg-card: rgba(15, 23, 42, 0.6);
-    --bg-card-hover: rgba(15, 23, 42, 0.8);
     
     /* Accent Colors */
     --accent-primary: #00babc;
@@ -33,7 +32,6 @@
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
-    --transition-slow: 0.5s ease;
 }
 
 * {
@@ -455,11 +453,6 @@ body {
     font-size: 0.85rem;
     color: var(--text-secondary);
     margin-bottom: 0;
-}
-
-.intra-campus {
-    font-size: 0.8rem;
-    color: var(--text-muted);
 }
 
 .intra-level {
