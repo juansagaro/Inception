@@ -1,19 +1,19 @@
 FROM debian:bookworm
 
-# Instalar Redis
+# Install Redis
 RUN apt-get update && apt-get install -y \
     redis-server \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar configuración y script
+# Copy config and entrypoint
 COPY conf/redis.conf /etc/redis/redis.conf
 COPY tools/redis_start.sh /usr/local/bin/redis_start.sh
 
-# Dar permisos de ejecución
+# Make executable
 RUN chmod +x /usr/local/bin/redis_start.sh
 
-# Puerto de Redis
+# Redis port
 EXPOSE 6379
 
-# Arrancar Redis
+# Run entrypoint
 ENTRYPOINT ["/usr/local/bin/redis_start.sh"]

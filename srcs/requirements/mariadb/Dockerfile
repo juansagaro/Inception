@@ -4,10 +4,10 @@ RUN apt-get update && apt-get install -y \
     mariadb-server \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar la configuración
+# Copy config
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-# Preparar carpetas necesarias para que MariaDB no falle al arrancar
+# Create runtime dir for MariaDB socket
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 
 COPY tools/db_start.sh /usr/local/bin/db_start.sh

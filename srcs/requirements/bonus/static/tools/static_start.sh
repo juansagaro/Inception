@@ -2,5 +2,5 @@
 
 echo "Iniciando servidor de sitio estático..."
 
-# exec para que NGINX tome el PID 1
+# exec so NGINX takes PID 1
 exec nginx -g "daemon off;"

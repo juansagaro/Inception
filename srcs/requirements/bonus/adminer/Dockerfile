@@ -1,28 +1,28 @@
 FROM debian:bookworm
 
-# Instalar PHP y wget para descargar Adminer
+# Install PHP and wget to download Adminer
 RUN apt-get update && apt-get install -y \
     php8.2 \
     php8.2-mysql \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Crear directorio para Adminer
+# Create Adminer directory
 RUN mkdir -p /var/www/adminer
 
-# Descargar Adminer (versión 5.4.2 - compatible con PHP 8.2)
+# Download Adminer (v5.4.2 - PHP 8.2 compatible)
 RUN wget -O /var/www/adminer/index.php \
     https://github.com/vrana/adminer/releases/download/v5.4.2/adminer-5.4.2.php
 
-# Copiar script de inicio
+# Copy entrypoint
 COPY tools/adminer_start.sh /usr/local/bin/adminer_start.sh
 RUN chmod +x /usr/local/bin/adminer_start.sh
 
-# Directorio de trabajo
+# Working directory
 WORKDIR /var/www/adminer
 
-# Puerto interno de Adminer
+# Internal Adminer port
 EXPOSE 8080
 
-# Arrancar con el script
+# Run entrypoint
 ENTRYPOINT ["/usr/local/bin/adminer_start.sh"]

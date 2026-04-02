@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# Comprobamos si el certificado ya existe para no pisarlo
+# Skip if cert already exists
 if [ ! -f /etc/ssl/certs/nginx-selfsigned.crt ]; then
     echo "Generando certificado SSL con SAN para ${DOMAIN_NAME} y subdominios..."
     
-    # Crear certificado con Subject Alternative Names (SAN)
-    # Esto permite que un solo certificado cubra múltiples subdominios
+    # Generate cert with SAN to cover all subdomains
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
         -keyout /etc/ssl/private/nginx-selfsigned.key \
         -out /etc/ssl/certs/nginx-selfsigned.crt \
@@ -15,5 +14,5 @@ if [ ! -f /etc/ssl/certs/nginx-selfsigned.crt ]; then
     echo "Certificado generado para: ${DOMAIN_NAME}, adminer.${DOMAIN_NAME}, static.${DOMAIN_NAME}, portainer.${DOMAIN_NAME}"
 fi
 
-# El exec es VITAL para que NGINX asuma el PID 1
+# exec is critical for PID 1
 exec nginx -g "daemon off;"

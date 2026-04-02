@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# 1. Leer las contraseñas desde los Docker Secrets
+# 1. Read passwords from Docker Secrets
 DB_PASS=$(cat /run/secrets/db_password)
 WP_ADMIN_PASS=$(cat /run/secrets/wp_admin_password)
 WP_USER_PASS=$(cat /run/secrets/wp_user_password)
 
-# Si wp-config.php no existe, significa que es la primera vez que se lanza
+# First-time setup if wp-config.php doesn't exist
 if [ ! -f wp-config.php ]; then
     echo "Configurando WordPress por primera vez..."
 
-    # Descargar WordPress
+    # Download WordPress core
     wp core download --locale=es_ES --allow-root
 
-    # Crear el archivo wp-config.php usando las variables de entorno y el secreto de la BD
+    # Create wp-config.php
     wp config create \
         --dbname=${SQL_DATABASE} \
         --dbuser=${SQL_USER} \
@@ -20,12 +20,12 @@ if [ ! -f wp-config.php ]; then
         --dbhost=mariadb:3306 \
         --allow-root
 
-    # Añadir configuración de Redis al wp-config.php (ANTES de instalar)
+    # Add Redis config BEFORE install
     wp config set WP_REDIS_HOST "${WP_REDIS_HOST}" --allow-root
     wp config set WP_REDIS_PORT "${WP_REDIS_PORT}" --allow-root
     wp config set WP_CACHE true --raw --allow-root
 
-    # Instalar WordPress (crea las tablas y el usuario Admin)
+    # Install WordPress (creates tables + admin user)
     wp core install \
         --url=https://${DOMAIN_NAME} \
         --title="Inception 42" \
@@ -34,7 +34,7 @@ if [ ! -f wp-config.php ]; then
         --admin_email=${WP_ADMIN_EMAIL} \
         --allow-root
 
-    # Crear usuario adicional exigido por el subject
+    # Create additional user (required by subject)
     wp user create \
         ${WP_USER} \
         ${WP_USER_EMAIL} \
@@ -42,7 +42,7 @@ if [ ! -f wp-config.php ]; then
         --user_pass=${WP_USER_PASS} \
         --allow-root
 
-    # Instalar y activar el plugin Redis Object Cache
+    # Setup Redis Object Cache plugin
     wp plugin install redis-cache --activate --allow-root
     wp redis enable --allow-root
 
@@ -51,8 +51,8 @@ else
     echo "WordPress ya está configurado. Saltando instalación."
 fi
 
-# Ajustar permisos para que NGINX y PHP-FPM puedan leer y escribir
+# Fix permissions for NGINX/PHP-FPM
 chown -R www-data:www-data /var/www/html
 
-# Arrancar PHP-FPM en primer plano (PID 1)
+# Start PHP-FPM in foreground (PID 1)
 exec php-fpm8.2 -F

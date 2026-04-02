@@ -1,15 +1,15 @@
 [mysqld]
-# Usuario que ejecutará el demonio
+# Daemon user
 user            = mysql
 
-# Puerto de escucha estándar
+# Default port
 port            = 3306
 
-# Ruta donde se guardarán los datos (coincide con tu volumen de Docker)
+# Data directory (matches Docker volume)
 datadir         = /var/lib/mysql
 
-# Ruta del socket (coincide con la carpeta que creaste en tu Dockerfile)
+# Socket path (matches dir created in Dockerfile)
 socket          = /run/mysqld/mysqld.sock
 
-# Escuchar a todas las IPs de la red interna de Docker (VITAL para WordPress)
+# Listen on all interfaces (required for WordPress connection)
 bind-address    = 0.0.0.0

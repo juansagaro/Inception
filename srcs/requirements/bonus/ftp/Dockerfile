@@ -1,22 +1,22 @@
 FROM debian:bookworm
 
-# Instalar vsftpd (Very Secure FTP Daemon)
+# Install vsftpd (Very Secure FTP Daemon)
 RUN apt-get update && apt-get install -y \
     vsftpd \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar configuración y script
+# Copy config and startup script
 COPY conf/vsftpd.conf /etc/vsftpd.conf
 COPY tools/ftp_start.sh /usr/local/bin/ftp_start.sh
 
-# Dar permisos de ejecución
+# Make script executable
 RUN chmod +x /usr/local/bin/ftp_start.sh
 
-# Crear directorio para el modo pasivo
+# Create directory for passive mode
 RUN mkdir -p /var/run/vsftpd/empty
 
-# Puerto de control FTP + rango de puertos pasivos
+# FTP control port + passive port range
 EXPOSE 21 21100-21110
 
-# Arrancar vsftpd
+# Start vsftpd
 ENTRYPOINT ["/usr/local/bin/ftp_start.sh"]

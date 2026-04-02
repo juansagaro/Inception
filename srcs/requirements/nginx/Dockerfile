@@ -1,20 +1,20 @@
 FROM debian:bookworm
 
-# Instalar NGINX y OpenSSL
+# Install NGINX and OpenSSL
 RUN apt-get update && apt-get install -y \
     nginx \
     openssl \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar la configuración
+# Copy config files
 COPY ./conf/nginx.conf /etc/nginx/sites-available/default
 COPY ./tools/nginx_start.sh /var/www/nginx_start.sh
 
-# Dar permisos al script
+# Make script executable
 RUN chmod +x /var/www/nginx_start.sh
 
-# Exponer solo el puerto 443
+# Only expose 443 (TLS)
 EXPOSE 443
 
-# Arrancar con el script
+# Run entrypoint
 ENTRYPOINT ["/var/www/nginx_start.sh"]

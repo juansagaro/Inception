@@ -1,29 +1,29 @@
 #!/bin/bash
 
-# Script de inicio para FTP Server (vsftpd)
+# FTP Server (vsftpd) startup script
 
-# Leer contraseña desde Docker Secrets
+# Read password from Docker Secrets
 FTP_PASS=$(cat /run/secrets/ftp_password)
 
-# Crear usuario FTP si no existe
+# Create FTP user if not exists
 if ! id "${FTP_USER}" &>/dev/null; then
-    echo "Creando usuario FTP: ${FTP_USER}..."
+    echo "Creating FTP user: ${FTP_USER}..."
     
-    # Crear usuario con home en /var/www/html (volumen de WordPress)
+    # Create user with home at /var/www/html (WordPress volume)
     useradd -m -d /var/www/html -s /bin/bash "${FTP_USER}"
     
-    # Establecer contraseña
+    # Set password
     echo "${FTP_USER}:${FTP_PASS}" | chpasswd
     
-    # Asegurar permisos correctos
+    # Ensure correct permissions
     chown -R "${FTP_USER}:${FTP_USER}" /var/www/html
     
-    echo "Usuario FTP creado correctamente."
+    echo "FTP user created successfully."
 else
-    echo "Usuario FTP ${FTP_USER} ya existe."
+    echo "FTP user ${FTP_USER} already exists."
 fi
 
-echo "Iniciando vsftpd..."
+echo "Starting vsftpd..."
 
-# exec para que vsftpd tome el PID 1
+# exec to let vsftpd take PID 1
 exec vsftpd /etc/vsftpd.conf

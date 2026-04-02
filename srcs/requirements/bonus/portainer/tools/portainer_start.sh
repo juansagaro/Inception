@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Script de inicio para Portainer
-# Portainer necesita acceso al socket de Docker para gestionar contenedores
+# Portainer startup script
+# Portainer needs access to the Docker socket to manage containers
 
-echo "Iniciando Portainer..."
+echo "Starting Portainer..."
 
-# exec para que Portainer tome el PID 1
-# --bind: Puerto HTTP interno (NGINX hace el proxy con HTTPS)
-# --data: Directorio para almacenar configuración de Portainer
+# exec to let Portainer take PID 1
+# --bind: Internal HTTP port (NGINX proxies with HTTPS)
+# --data: Directory to store Portainer configuration
 exec /opt/portainer/portainer \
     --bind=:9000 \
     --data=/data
