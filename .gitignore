@@ -1,11 +1,13 @@
 # Docker environment variables
-.env
+#.env
 
 # Docker Secrets (CRÍTICO: Nunca subir las contraseñas reales)
-secrets/
+#secrets/
 
 # Data folders (En caso de que las hayas creado localmente para pruebas)
 data/
+
+en.subject.pdf
 
 # OS generated files
 .DS_Store

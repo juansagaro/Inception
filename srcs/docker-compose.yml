@@ -4,6 +4,7 @@ services:
     build: ./requirements/nginx
     image: nginx_image
     restart: always
+    env_file: .env
     ports:
       - "443:443"
     depends_on:
@@ -35,6 +36,7 @@ services:
     env_file: .env
     depends_on:
       - mariadb
+      - redis
     networks:
       - jsagaro-net
     volumes:
@@ -42,6 +44,72 @@ services:
     secrets:
       - db_password
       - wp_admin_password
+      - wp_user_password
+
+  # ============== BONUS SERVICES ==============
+
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    image: redis_image
+    restart: always
+    networks:
+      - jsagaro-net
+    expose:
+      - "6379"
+
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer
+    image: adminer_image
+    restart: always
+    depends_on:
+      - mariadb
+    networks:
+      - jsagaro-net
+    expose:
+      - "8080"
+
+  static:
+    container_name: static
+    build: ./requirements/bonus/static
+    image: static_image
+    restart: always
+    networks:
+      - jsagaro-net
+    expose:
+      - "80"
+
+  ftp:
+    container_name: ftp
+    build: ./requirements/bonus/ftp
+    image: ftp_image
+    restart: always
+    env_file: .env
+    depends_on:
+      - wordpress
+    networks:
+      - jsagaro-net
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
+    volumes:
+      - wordpress_data:/var/www/html
+    secrets:
+      - ftp_password
+
+  portainer:
+    container_name: portainer
+    build: ./requirements/bonus/portainer
+    image: portainer_image
+    restart: always
+    networks:
+      - jsagaro-net
+    expose:
+      - "9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
 
 networks:
   jsagaro-net:
@@ -60,6 +128,12 @@ volumes:
       type: none
       device: /home/${USER}/data/wordpress
       o: bind
+  portainer_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/${USER}/data/portainer
+      o: bind
 
 secrets:
   db_password:
@@ -68,3 +142,7 @@ secrets:
     file: ../secrets/db_root_password.txt
   wp_admin_password:
     file: ../secrets/wp_admin_password.txt
+  wp_user_password:
+    file: ../secrets/wp_user_password.txt
+  ftp_password:
+    file: ../secrets/ftp_password.txt

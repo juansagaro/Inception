@@ -22,6 +22,7 @@ all:
 	@echo "$(GREEN)[+] Creating volume directories in $(DATA_DIR)...$(RESET)"
 	@mkdir -p $(DATA_DIR)/mariadb
 	@mkdir -p $(DATA_DIR)/wordpress
+	@mkdir -p $(DATA_DIR)/portainer
 	@echo "$(GREEN)[+] Building and starting containers...$(RESET)"
 	@docker compose -f $(COMPOSE_FILE) up -d --build
 	@echo "$(BLUE)=== Inception is safely up and running! ===$(RESET)"
@@ -39,6 +40,7 @@ fclean: clean
 	@echo "$(RED)[-] Deleting local folder contents (requires sudo)...$(RESET)"
 	@sudo rm -rf $(DATA_DIR)/mariadb/*
 	@sudo rm -rf $(DATA_DIR)/wordpress/*
+	@sudo rm -rf $(DATA_DIR)/portainer/*
 	@echo "$(BLUE)=== Full cleanup completed successfully ===$(RESET)"
 
 # re: Restarts the project from scratch

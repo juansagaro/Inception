@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsagaro- | Portfolio 42</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">jsagaro-</div>
+            <nav class="nav">
+                <a href="#about">Sobre mí</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Proyectos</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Hola, soy <span class="highlight">jsagaro-</span></h1>
+                <p class="subtitle">Estudiante de 42 Madrid | DevOps & System Administration</p>
+                <p class="description">Apasionado por la infraestructura, contenedores y la automatización.</p>
+                <a href="#projects" class="cta-button">Ver proyectos</a>
+            </div>
+            <div class="hero-image">
+                <div class="avatar-placeholder">
+                    <span>42</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2>Sobre mí</h2>
+            <div class="about-content">
+                <p>Soy estudiante del campus de <strong>42 Madrid</strong>, donde estoy desarrollando mis habilidades en programación, administración de sistemas y DevOps.</p>
+                <p>Este sitio web estático forma parte del proyecto <strong>Inception</strong>, donde he construido una infraestructura completa usando Docker y Docker Compose.</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">🐳</div>
+                    <h3>Docker</h3>
+                    <p>Containerización, Docker Compose, optimización de imágenes</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🐧</div>
+                    <h3>Linux</h3>
+                    <p>Debian, administración de sistemas, scripting Bash</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🌐</div>
+                    <h3>Networking</h3>
+                    <p>TCP/IP, DNS, NGINX, TLS/SSL</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💾</div>
+                    <h3>Databases</h3>
+                    <p>MariaDB, Redis, SQL</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🔧</div>
+                    <h3>C / C++</h3>
+                    <p>Proyectos del currículum de 42</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🔒</div>
+                    <h3>Security</h3>
+                    <p>Docker Secrets, buenas prácticas de seguridad</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2>Proyectos 42</h2>
+            <div class="projects-grid">
+                <div class="project-card featured">
+                    <div class="project-tag">Actual</div>
+                    <h3>Inception</h3>
+                    <p>Infraestructura Docker con NGINX, WordPress, MariaDB, Redis, FTP, Adminer y Portainer.</p>
+                    <div class="tech-stack">
+                        <span>Docker</span>
+                        <span>NGINX</span>
+                        <span>WordPress</span>
+                        <span>MariaDB</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Born2beroot</h3>
+                    <p>Configuración de una máquina virtual con políticas de seguridad estrictas.</p>
+                    <div class="tech-stack">
+                        <span>Debian</span>
+                        <span>SSH</span>
+                        <span>UFW</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Minishell</h3>
+                    <p>Implementación de un shell básico en C.</p>
+                    <div class="tech-stack">
+                        <span>C</span>
+                        <span>Unix</span>
+                        <span>Parsing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2>Contacto</h2>
+            <div class="contact-content">
+                <p>¿Interesado en colaborar o saber más sobre mis proyectos?</p>
+                <div class="contact-links">
+                    <a href="mailto:jsagaro-@student.42madrid.com" class="contact-link">
+                        <span class="contact-icon">📧</span>
+                        jsagaro-@student.42madrid.com
+                    </a>
+                    <a href="https://github.com/jsagaro-" class="contact-link" target="_blank">
+                        <span class="contact-icon">💻</span>
+                        GitHub
+                    </a>
+                    <a href="https://profile.intra.42.fr/" class="contact-link" target="_blank">
+                        <span class="contact-icon">🎓</span>
+                        Intra 42
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Hecho con ❤️ como parte del proyecto <strong>Inception</strong> de 42</p>
+            <p class="footer-note">Este sitio es estático (HTML/CSS/JS) - Sin PHP permitido</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

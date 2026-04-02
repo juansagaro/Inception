@@ -20,6 +20,11 @@ if [ ! -f wp-config.php ]; then
         --dbhost=mariadb:3306 \
         --allow-root
 
+    # Añadir configuración de Redis al wp-config.php (ANTES de instalar)
+    wp config set WP_REDIS_HOST "${WP_REDIS_HOST}" --allow-root
+    wp config set WP_REDIS_PORT "${WP_REDIS_PORT}" --allow-root
+    wp config set WP_CACHE true --raw --allow-root
+
     # Instalar WordPress (crea las tablas y el usuario Admin)
     wp core install \
         --url=https://${DOMAIN_NAME} \
@@ -34,8 +39,14 @@ if [ ! -f wp-config.php ]; then
         ${WP_USER} \
         ${WP_USER_EMAIL} \
         --role=author \
-        --user_pass=${WP_USER_PASSWORD} \
+        --user_pass=${WP_USER_PASS} \
         --allow-root
+
+    # Instalar y activar el plugin Redis Object Cache
+    wp plugin install redis-cache --activate --allow-root
+    wp redis enable --allow-root
+
+    echo "Redis Object Cache configurado correctamente."
 else
     echo "WordPress ya está configurado. Saltando instalación."
 fi
