@@ -3,147 +3,587 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jsagaro- | Portfolio 42</title>
+    <meta name="description" content="Portfolio de jsagaro- - Software Engineer especializado en C, C++ y sistemas Unix">
+    <title>jsagaro- | Software Engineer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">jsagaro-</div>
-            <nav class="nav">
-                <a href="#about">Sobre mí</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Proyectos</a>
-                <a href="#contact">Contacto</a>
-            </nav>
-        </header>
+    <!-- Canvas Background -->
+    <canvas id="matrix-canvas"></canvas>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Hola, soy <span class="highlight">jsagaro-</span></h1>
-                <p class="subtitle">Estudiante de 42 Madrid | DevOps & System Administration</p>
-                <p class="description">Apasionado por la infraestructura, contenedores y la automatización.</p>
-                <a href="#projects" class="cta-button">Ver proyectos</a>
-            </div>
-            <div class="hero-image">
-                <div class="avatar-placeholder">
-                    <span>42</span>
-                </div>
-            </div>
-        </section>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-symbol">&lt;</span>jsagaro-<span class="brand-symbol">/&gt;</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Inicio</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </nav>
 
-        <!-- About Section -->
-        <section id="about" class="section">
-            <h2>Sobre mí</h2>
-            <div class="about-content">
-                <p>Soy estudiante del campus de <strong>42 Madrid</strong>, donde estoy desarrollando mis habilidades en programación, administración de sistemas y DevOps.</p>
-                <p>Este sitio web estático forma parte del proyecto <strong>Inception</strong>, donde he construido una infraestructura completa usando Docker y Docker Compose.</p>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">42 Madrid</div>
+            <h1 class="hero-title">
+                <span class="greeting">Hola, soy</span>
+                <span class="name">Juan</span>
+            </h1>
+            <h2 class="hero-subtitle">
+                <span class="typing-text">Software Engineer</span>
+                <span class="cursor">|</span>
+            </h2>
+            <p class="hero-description">
+                Desarrollador enfocado en <span class="highlight">bajo nivel</span>, 
+                <span class="highlight">sistemas Unix</span> y <span class="highlight">arquitectura de software</span>. 
+                Apasionado por escribir codigo eficiente en <span class="code-tag">C</span> y 
+                <span class="code-tag">C++</span>, donde cada byte cuenta y cada ciclo importa.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">
+                    <span>Ver Proyectos</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+                <a href="#skills" class="btn btn-outline">
+                    <span>Ver Skills</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-secondary">Contacto</a>
             </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🐳</div>
-                    <h3>Docker</h3>
-                    <p>Containerización, Docker Compose, optimización de imágenes</p>
+        </div>
+        
+        <!-- Hero Right Side: Terminal + 42 Card -->
+        <div class="hero-sidebar">
+            <!-- Terminal Easter Egg -->
+            <div class="hero-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">jsagaro-@42madrid:~</span>
                 </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🐧</div>
-                    <h3>Linux</h3>
-                    <p>Debian, administración de sistemas, scripting Bash</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🌐</div>
-                    <h3>Networking</h3>
-                    <p>TCP/IP, DNS, NGINX, TLS/SSL</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">💾</div>
-                    <h3>Databases</h3>
-                    <p>MariaDB, Redis, SQL</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🔧</div>
-                    <h3>C / C++</h3>
-                    <p>Proyectos del currículum de 42</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🔒</div>
-                    <h3>Security</h3>
-                    <p>Docker Secrets, buenas prácticas de seguridad</p>
+                <div class="terminal-body">
+                    <p><span class="prompt">$</span> whoami</p>
+                    <p class="output">jsagaro-</p>
+                    <p><span class="prompt">$</span> cat skills.txt</p>
+                    <p class="output">C, C++, Unix, Docker, Networks</p>
+                    <p><span class="prompt">$</span> ./passion --level</p>
+                    <p class="output">Systems Programming: <span class="bar">████████████</span> 100%</p>
+                    <p><span class="prompt">$</span> <span class="cursor-block">_</span></p>
                 </div>
             </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <h2>Proyectos 42</h2>
-            <div class="projects-grid">
-                <div class="project-card featured">
-                    <div class="project-tag">Actual</div>
-                    <h3>Inception</h3>
-                    <p>Infraestructura Docker con NGINX, WordPress, MariaDB, Redis, FTP, Adminer y Portainer.</p>
-                    <div class="tech-stack">
-                        <span>Docker</span>
-                        <span>NGINX</span>
-                        <span>WordPress</span>
-                        <span>MariaDB</span>
+            
+            <!-- 42 Intra Card -->
+            <div class="intra-card">
+                <div class="intra-header">
+                    <div class="intra-logo">
+                        <svg width="32" height="32" viewBox="0 0 137.52 96.5" fill="currentColor">
+                            <polygon points="76.01 96.5 50.5 96.5 50.5 48.25 0 48.25 0 71.75 25.5 71.75 25.5 96.5 0 96.5 0 0 25.5 0 25.5 23 76.01 23 76.01 0 101.51 0 101.51 48.25 76.01 48.25"/>
+                            <polygon points="137.52 96.5 112.02 96.5 112.02 71.75 137.52 71.75 137.52 48.25 112.02 48.25 112.02 23 137.52 23"/>
+                        </svg>
+                    </div>
+                    <div class="intra-badge">Cadet</div>
+                </div>
+                <div class="intra-main">
+                    <div class="intra-avatar">
+                        <img src="https://cdn.intra.42.fr/users/4af439f7e54ed80dcd5b9addd1a0e850/jsagaro-.jpg" alt="jsagaro- avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="avatar-fallback">JS</div>
+                    </div>
+                    <div class="intra-info">
+                        <h3 class="intra-name">jsagaro-</h3>
+                        <p class="intra-fullname">Juan Sagaro</p>
                     </div>
                 </div>
-                <div class="project-card">
-                    <h3>Born2beroot</h3>
-                    <p>Configuración de una máquina virtual con políticas de seguridad estrictas.</p>
-                    <div class="tech-stack">
-                        <span>Debian</span>
-                        <span>SSH</span>
-                        <span>UFW</span>
+                <div class="intra-level">
+                    <div class="level-bar">
+                        <div class="level-progress" style="width: 83%;"></div>
                     </div>
+                    <span class="level-text">Level 7.83</span>
                 </div>
-                <div class="project-card">
-                    <h3>Minishell</h3>
-                    <p>Implementación de un shell básico en C.</p>
-                    <div class="tech-stack">
+                <a href="https://profile.intra.42.fr/users/jsagaro-" target="_blank" rel="noopener noreferrer" class="intra-link">
+                    Ver perfil
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-header">
+            <span class="section-tag">// Skills</span>
+            <h2 class="section-title">Tech Stack</h2>
+            <p class="section-subtitle">Tecnologias y herramientas que domino</p>
+        </div>
+        
+        <div class="skills-container">
+            <!-- Languages -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"/>
+                        <polyline points="8 6 2 12 8 18"/>
+                    </svg>
+                    Lenguajes
+                </h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C">
                         <span>C</span>
-                        <span>Unix</span>
-                        <span>Parsing</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++">
+                        <span>C++</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python">
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/oracle/oracle-original.svg" alt="SQL">
+                        <span>SQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML5">
+                        <span>HTML5</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="CSS3">
+                        <span>CSS3</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="asm-icon">
+                            <path d="M3 3h18v18H3V3zm16.5 16.5v-15h-15v15h15zM6.5 15.5h3v-1h-2v-1h2v-1h-2v-1h2v-1h-3v5zm4.5 0h1v-2h1v2h1v-5h-1v2h-1v-2h-1v5zm4 0h3v-1h-2v-3h-1v4z"/>
+                        </svg>
+                        <span>Assembly</span>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <h2>Contacto</h2>
-            <div class="contact-content">
-                <p>¿Interesado en colaborar o saber más sobre mis proyectos?</p>
-                <div class="contact-links">
-                    <a href="mailto:j.sagarob@gmail.com" class="contact-link">
-                        <span class="contact-icon">📧</span>
-                        j.sagarob@gmail.com
-                    </a>
-                    <a href="https://github.com/juansagaro" class="contact-link" target="_blank">
-                        <span class="contact-icon">💻</span>
-                        GitHub
-                    </a>
-                    <a href="https://profile.intra.42.fr/users/jsagaro-" class="contact-link" target="_blank">
-                        <span class="contact-icon">🎓</span>
-                        Intra 42
-                    </a>
+            
+            <!-- Frameworks -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    Frameworks & Librerias
+                </h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-plain.svg" alt="Django">
+                        <span>Django</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytest/pytest-original.svg" alt="Pytest">
+                        <span>Pytest</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cmake/cmake-original.svg" alt="CMake">
+                        <span>CMake/Make</span>
+                    </div>
+                    <div class="skill-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="crypto-icon">
+                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12v5.7c0 4.54-3.11 8.8-7 9.94-3.89-1.14-7-5.4-7-9.94V6.3l7-3.12zm-1 5.82v2h2v-2h1v2h1v2h-1v2h-1v2h-2v-2H9v-2H8v-2h1v-2h2z"/>
+                        </svg>
+                        <span>Cryptography</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pygame/pygame-original.svg" alt="Pygame" onerror="this.src='https://www.pygame.org/docs/_static/pygame_logo.png'">
+                        <span>Pygame</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pypi/pypi-original.svg" alt="PyPI">
+                        <span>PyBuild</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" alt="NumPy">
+                        <span>NumPy</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/matplotlib/matplotlib-original.svg" alt="Matplotlib">
+                        <span>Matplotlib</span>
+                    </div>
                 </div>
             </div>
-        </section>
+            
+            <!-- Tools -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                    Herramientas & Plataformas
+                </h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git">
+                        <span>Git</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux">
+                        <span>Linux</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker">
+                        <span>Docker</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bash/bash-original.svg" alt="Bash">
+                        <span>Bash</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vim/vim-original.svg" alt="Vim">
+                        <span>Vim</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="VSCode">
+                        <span>VSCode</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nginx/nginx-original.svg" alt="NGINX">
+                        <span>NGINX</span>
+                    </div>
+                    <div class="skill-item">
+                        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt="GitHub">
+                        <span>GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Hecho con ❤️ como parte del proyecto <strong>Inception</strong> de 42</p>
-            <p class="footer-note">Este sitio es estático (HTML/CSS/JS) - Sin PHP permitido</p>
-        </footer>
-    </div>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-header">
+            <span class="section-tag">// Proyectos</span>
+            <h2 class="section-title">Lo que he construido</h2>
+            <p class="section-subtitle">Proyectos desarrollados durante mi formacion en 42</p>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- Row 1: Inception, ft_irc, Cub3D -->
+            
+            <!-- Project 1: Inception -->
+            <article class="project-card">
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <span class="card-status">Completado</span>
+                    </div>
+                    <h3 class="card-title">Inception</h3>
+                    <p class="card-description">
+                        Infraestructura completa de contenedores Docker orquestada con docker-compose. 
+                        Incluye NGINX con TLS, WordPress, MariaDB y servicios bonus como Redis, 
+                        Adminer y Portainer.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Bash</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">NGINX</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-category">DevOps & Virtualizacion</span>
+                    <a href="https://github.com/juansagaro/Inception" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project 2: ft_irc -->
+            <article class="project-card">
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </div>
+                        <span class="card-status">Completado</span>
+                    </div>
+                    <h3 class="card-title">ft_irc</h3>
+                    <p class="card-description">
+                        Servidor IRC construido desde cero en C++. Implementacion de multiplexacion 
+                        de I/O con poll/epoll, sockets no bloqueantes y el protocolo IRC completo 
+                        con canales, modos y autenticacion.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Sockets</span>
+                        <span class="tech-tag">TCP/IP</span>
+                        <span class="tech-tag">RFC 2812</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-category">Networking & Protocolos</span>
+                    <a href="https://github.com/juansagaro/ft_irc" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project 3: Cub3D -->
+            <article class="project-card">
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+                                <line x1="12" y1="22" x2="12" y2="15.5"/>
+                                <polyline points="22 8.5 12 15.5 2 8.5"/>
+                            </svg>
+                        </div>
+                        <span class="card-status">Completado</span>
+                    </div>
+                    <h3 class="card-title">Cub3D</h3>
+                    <p class="card-description">
+                        Motor grafico 3D inspirado en Wolfenstein 3D. Raycasting con algoritmo DDA, 
+                        texturas en paredes/suelo/techo, minimapa, puertas animadas y arma 
+                        con sprites. Bonus completo.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Raycasting</span>
+                        <span class="tech-tag">MiniLibX</span>
+                        <span class="tech-tag">DDA</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-category">Graficos & Matematicas</span>
+                    <a href="https://github.com/juansagaro/Cub3d" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Row 2: Philosophers, CPP Modules, minishell -->
+
+            <!-- Project 4: Philosophers -->
+            <article class="project-card">
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <span class="card-status">Completado</span>
+                    </div>
+                    <h3 class="card-title">Philosophers</h3>
+                    <p class="card-description">
+                        Solucion al problema de los filosofos comensales usando threads y mutexes. 
+                        Implementacion de sincronizacion, prevencion de deadlocks y 
+                        gestion de recursos compartidos.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Threads</span>
+                        <span class="tech-tag">Mutexes</span>
+                        <span class="tech-tag">Concurrencia</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-category">Concurrencia & Threads</span>
+                    <a href="https://github.com/juansagaro/Philosophers" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project 5: CPP Modules -->
+            <article class="project-card">
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                            </svg>
+                        </div>
+                        <span class="card-status">Completado</span>
+                    </div>
+                    <h3 class="card-title">CPP Modules</h3>
+                    <p class="card-description">
+                        Serie completa de ejercicios de C++ del curriculo de 42. Cubre OOP, 
+                        gestion de memoria, polimorfismo, templates, contenedores STL 
+                        y patrones de diseno.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">C++98</span>
+                        <span class="tech-tag">OOP</span>
+                        <span class="tech-tag">STL</span>
+                        <span class="tech-tag">Templates</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-category">Programacion Orientada a Objetos</span>
+                    <a href="https://github.com/juansagaro/CPP" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Project 6: minishell -->
+            <article class="project-card">
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polyline points="4 17 10 11 4 5"/>
+                                <line x1="12" y1="19" x2="20" y2="19"/>
+                            </svg>
+                        </div>
+                        <span class="card-status">Completado</span>
+                    </div>
+                    <h3 class="card-title">minishell</h3>
+                    <p class="card-description">
+                        Implementacion de un shell simplificado tipo bash. Soporta pipes, 
+                        redirecciones, variables de entorno, heredoc y comandos built-in 
+                        como cd, echo, export y unset.
+                    </p>
+                    <div class="card-tech">
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">Unix</span>
+                        <span class="tech-tag">Procesos</span>
+                        <span class="tech-tag">Parsing</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <span class="card-category">Sistemas & Shell</span>
+                    <a href="https://github.com/juansagaro/minishell" target="_blank" rel="noopener noreferrer" class="card-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <span class="section-tag">// Contacto</span>
+                <h2 class="section-title">Hablemos</h2>
+                <p class="section-subtitle">
+                    Tienes un proyecto interesante o quieres colaborar? 
+                    No dudes en contactarme.
+                </p>
+            </div>
+            
+            <div class="contact-links">
+                <a href="https://github.com/juansagaro" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">@juansagaro</span>
+                    </div>
+                    <div class="contact-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </div>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/juan-sagar%C3%B3-9a6bba37b/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">Juan Sagaro</span>
+                    </div>
+                    <div class="contact-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="mailto:j.sagarob@gmail.com" class="contact-card">
+                    <div class="contact-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <div class="contact-info">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">j.sagarob@gmail.com</span>
+                    </div>
+                    <div class="contact-arrow">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                <span class="code-comment">/* Hecho con </span>
+                <span class="heart">&lt;3</span>
+                <span class="code-comment"> y mucho </span>
+                <span class="code-tag">C</span>
+                <span class="code-comment"> en 42 Madrid */</span>
+            </p>
+            <p class="footer-copyright">2026 jsagaro-. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
