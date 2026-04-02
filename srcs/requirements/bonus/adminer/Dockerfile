@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y \
 # Crear directorio para Adminer
 RUN mkdir -p /var/www/adminer
 
-# Descargar Adminer (un solo archivo PHP)
+# Descargar Adminer (versión 5.4.2 - compatible con PHP 8.2)
 RUN wget -O /var/www/adminer/index.php \
-    https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1.php
+    https://github.com/vrana/adminer/releases/download/v5.4.2/adminer-5.4.2.php
 
 # Copiar script de inicio
 COPY tools/adminer_start.sh /usr/local/bin/adminer_start.sh
