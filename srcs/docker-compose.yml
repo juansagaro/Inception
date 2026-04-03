@@ -2,7 +2,7 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx
-    image: nginx_image
+    image: nginx
     restart: always
     env_file: .env
     ports:
@@ -17,7 +17,7 @@ services:
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb
-    image: mariadb_image
+    image: mariadb
     restart: always
     env_file: .env
     networks:
@@ -31,7 +31,7 @@ services:
   wordpress:
     container_name: wordpress
     build: ./requirements/wordpress
-    image: wordpress_image
+    image: wordpress
     restart: always
     env_file: .env
     depends_on:
@@ -51,7 +51,7 @@ services:
   redis:
     container_name: redis
     build: ./requirements/bonus/redis
-    image: redis_image
+    image: redis
     restart: always
     networks:
       - jsagaro-net
@@ -61,7 +61,7 @@ services:
   adminer:
     container_name: adminer
     build: ./requirements/bonus/adminer
-    image: adminer_image
+    image: adminer
     restart: always
     depends_on:
       - mariadb
@@ -73,7 +73,7 @@ services:
   static:
     container_name: static
     build: ./requirements/bonus/static
-    image: static_image
+    image: static
     restart: always
     networks:
       - jsagaro-net
@@ -83,7 +83,7 @@ services:
   ftp:
     container_name: ftp
     build: ./requirements/bonus/ftp
-    image: ftp_image
+    image: ftp
     restart: always
     env_file: .env
     depends_on:
@@ -101,7 +101,7 @@ services:
   portainer:
     container_name: portainer
     build: ./requirements/bonus/portainer
-    image: portainer_image
+    image: portainer
     restart: always
     networks:
       - jsagaro-net
